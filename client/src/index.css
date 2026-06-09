@@ -1,0 +1,258 @@
+/* 
+ * CENTER FOR STORYTELLING INNOVATION
+ * Design System: Bold Editorial — inspired by 826 Valencia & 826 National
+ * 
+ * Core Principles:
+ * - Massive condensed display type (Black Han Sans / Barlow Condensed)
+ * - High-contrast color blocking: white + CSI orange (#E8531D) + deep navy (#0F1B2D)
+ * - Playful decorative elements: stamps, badges, wave dividers
+ * - Script subheadings (Caveat) for warmth
+ * - Pill-shaped CTAs, no gradients
+ * - Community photos full-bleed, text overlaid boldly
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 9999px; /* pill-shaped by default */
+  
+  /* CSI Brand Colors */
+  --csi-orange: #E8531D;
+  --csi-navy: #0F1B2D;
+  --csi-yellow: #F5C842;
+  --csi-teal: #1A8C7A;
+  --csi-cream: #FFF8F0;
+  
+  /* Semantic tokens */
+  --background: #FFFFFF;
+  --foreground: #0F1B2D;
+  --card: #FFFFFF;
+  --card-foreground: #0F1B2D;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F1B2D;
+  --primary: #E8531D;
+  --primary-foreground: #FFFFFF;
+  --secondary: #0F1B2D;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F5F0EB;
+  --muted-foreground: #6B6560;
+  --accent: #F5C842;
+  --accent-foreground: #0F1B2D;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8E0D8;
+  --input: #E8E0D8;
+  --ring: #E8531D;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Barlow', sans-serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href] {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      max-width: 1320px;
+    }
+  }
+
+  /* Display heading — massive condensed */
+  .display-heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  /* Script subheading — Caveat */
+  .script-label {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 1.35rem;
+    line-height: 1.2;
+  }
+
+  /* Section label — small caps */
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* Pill button */
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+  .btn-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  }
+  .btn-pill-orange {
+    background-color: #E8531D;
+    color: #FFFFFF;
+  }
+  .btn-pill-navy {
+    background-color: #0F1B2D;
+    color: #FFFFFF;
+  }
+  .btn-pill-yellow {
+    background-color: #F5C842;
+    color: #0F1B2D;
+  }
+  .btn-pill-outline {
+    background-color: transparent;
+    color: #0F1B2D;
+    border: 2.5px solid #0F1B2D;
+  }
+  .btn-pill-outline-white {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 2.5px solid #FFFFFF;
+  }
+
+  /* Rotated stamp badge */
+  .stamp-badge {
+    display: inline-block;
+    background-color: #0F1B2D;
+    color: #FFFFFF;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    transform: rotate(-3deg);
+  }
+  .stamp-badge-orange {
+    background-color: #E8531D;
+    color: #FFFFFF;
+  }
+  .stamp-badge-yellow {
+    background-color: #F5C842;
+    color: #0F1B2D;
+  }
+
+  /* Wave divider */
+  .wave-divider {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .wave-divider svg {
+    display: block;
+    width: 100%;
+  }
+
+  /* Underline highlight (826 Valencia style) */
+  .highlight-underline {
+    position: relative;
+    display: inline;
+  }
+  .highlight-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0.05em;
+    left: 0;
+    right: 0;
+    height: 0.18em;
+    background-color: #E8531D;
+    border-radius: 2px;
+  }
+
+  /* Card hover lift */
+  .card-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  }
+
+  /* Announcement bar */
+  .announcement-bar {
+    background-color: #E8531D;
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    text-align: center;
+    padding: 0.5rem 1rem;
+  }
+}
